@@ -1,8 +1,22 @@
-# Train Sim
+# Train Sim - Group 7
 
 A work-in-progress application to simulate purchasing train tickets. This project is used for an assignment of SE 577 at Drexel University.
 
-Please do not hesistate to contact the TAs (especially Jason Lefever or Hongzhou Fang) with any questions.
+### Project Details: 
+
+- [User Scenarios](https://docs.google.com/document/d/17qXcQV29qGFcG-WD5if1wZUmjGl9ywvFJMxEpQ1JR8Y/edit)
+- [Technology Stack](https://docs.google.com/document/d/17qXcQV29qGFcG-WD5if1wZUmjGl9ywvFJMxEpQ1JR8Y/edit)
+- [Database Schema](https://dbdiagram.io/d/60df44220b1d8a6d39649bfa)
+- [Template Repository](https://github.com/jlefever/trainsim-public)
+
+### Group Members
+
+| Name          | Role                                     |
+|---------------|------------------------------------------|
+| Grace Que     | Architect                                |
+| Courtney Finn | Developer                                |
+| Brian Song    | Developer                                |
+| Steve Hurlock | Tester, Admin                            |
 
 ## Getting Started
 
