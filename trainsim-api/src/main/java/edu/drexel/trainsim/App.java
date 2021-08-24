@@ -11,6 +11,7 @@ import edu.drexel.trainsim.itinerary.ItineraryModule;
 import edu.drexel.trainsim.itinerary.otp.OtpClient;
 import edu.drexel.trainsim.itinerary.otp.Prepopulater;
 import edu.drexel.trainsim.web.ItineraryController;
+import edu.drexel.trainsim.web.OrderController;
 import edu.drexel.trainsim.web.StopController;
 import edu.drexel.trainsim.web.UserLoginController;
 import io.javalin.Javalin;
@@ -52,6 +53,7 @@ public class App {
         injector.getInstance(ItineraryController.class).bindRoutes(app);
         injector.getInstance(StopController.class).bindRoutes(app);
         injector.getInstance(UserLoginController.class).bindRoutes(app);
+        injector.getInstance(OrderController.class).bindRoutes(app);
 
         // Start the web server
         app.start(80);

@@ -7,6 +7,8 @@ import NavButtonBar from "./NavButtonBar";
 import ProgressTracker from "./PurchaseTracker";
 import SearchHeader from "./SearchHeader";
 import TravelerInfoPage from "./TravelerInfoPage";
+import ConfirmationPage from "./ConfirmationPage"
+import axios from 'axios';
 
 export interface CheckoutPageProps {
     search: ItinerarySearch;
@@ -14,11 +16,49 @@ export interface CheckoutPageProps {
     setPage: (page: ReactElement) => void;
 }
 
-interface CheckoutPageState { }
+interface CheckoutPageState { 
+    cardholderName: string,
+    cardNumber: string,
+    cvv:string
+}
 
 export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutPageState> {
     constructor(props: CheckoutPageProps) {
         super(props);
+        this.state = {
+            cardholderName:'',
+            cardNumber: '',
+            cvv:''
+        }
+    }
+
+    onSumbmit = () => {
+        console.log(this.state)
+        
+        this.submitPayment().then(
+            response => {
+            if (response.status == 200 && response.data.code == 0) {
+                //make the call to backend
+                
+                this.props.setPage(<ConfirmationPage search={this.props.search} itinerary={this.props.itinerary} setPage={this.props.setPage} payment={this.state}/>)
+            } else {
+                alert(`Invalid Card Information! Please try again`);
+                console.log("false!!!")
+            }
+        });
+        
+    }
+
+    submitPayment  = async () => {
+        const paymenDetail = {
+                "paymentAmount": 20,
+                "creditCardInfo": {
+                    "cardNumber": this.state.cardNumber,
+                    "cvv": this.state.cvv
+                }
+            } ;
+        const response = await axios.post('http://localhost:8003/api/stripe/payment', paymenDetail);
+        return response;
     }
 
     override render() {
@@ -45,8 +85,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         icon="fas fa-user"
                                         autoComplete="cc-name"
                                         required={true}
-                                        value=""
-                                        setValue={v => console.log(v)}
+                                        value={this.state.cardholderName}
+                                        setValue={v => this.setState({cardholderName:v})}
                                     />
                                 </div>
                             </div>
@@ -59,8 +99,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         icon="fas fa-credit-card"
                                         autoComplete="cc-number"
                                         required={true}
-                                        value=""
-                                        setValue={v => console.log(v)}
+                                        value={this.state.cardNumber}
+                                        setValue={v => this.setState({cardNumber:v})}
                                     />
                                 </div>
                             </div>
@@ -85,8 +125,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         icon="fas fa-lock"
                                         autoComplete="cc-csc"
                                         required={true}
-                                        value=""
-                                        setValue={v => console.log(v)}
+                                        value={this.state.cvv}
+                                        setValue={v => this.setState({cvv:v})}
                                     />
                                 </div>
                             </div>
@@ -223,7 +263,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
             </div>
             <NavButtonBar
                 onBack={() => setPage(<TravelerInfoPage search={search} itinerary={itinerary} setPage={setPage} />)}
-                onNext={() => console.log("Next")} />
+                // onNext={() => setPage(<ConfirmationPage search={search} itinerary={itinerary} setPage={setPage} />)} />
+                onNext={() => this.onSumbmit()} />
         </div>
     }
 }
