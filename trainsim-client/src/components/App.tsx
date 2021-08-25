@@ -1,9 +1,7 @@
 import React, { Component, ReactElement } from "react";
 import GoogleLoginField from "./GoogleLoginField";
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import HomePage from "./HomePage";
-import Admin from "./Admin";
 
 
 interface AppState {

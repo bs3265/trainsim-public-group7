@@ -2,7 +2,6 @@ package edu.drexel.trainsim.web;
 
 import edu.drexel.trainsim.db.models.AdminLogin;
 import edu.drexel.trainsim.itinerary.otp.dtos.AdminLoginDto;
-import jdk.nashorn.internal.ir.IfNode;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

@@ -155,7 +155,7 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         value=""
                                         setValue={v => console.log(v)}
                                     />
-                                </div>
+                                </div>d
                                 <div className="column">
                                     <InputField
                                         label="Apartment or Suite (optional)"
