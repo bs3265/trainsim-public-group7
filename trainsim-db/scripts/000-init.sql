@@ -5,6 +5,18 @@ CREATE TABLE users (
     email TEXT UNIQUE NOT NULL
 );
 
+CREATE TABLE orders
+(id varchar NOT NULL PRIMARY KEY,
+email text NOT NULL,
+ticketNumber int NOT NULL,
+depart varchar NOT NULL,
+arrive varchar NOT NULL,
+passenger varchar NOT NULL,
+tripType varchar NOT NULL,
+amount decimal(12,2) NOT NULL,
+phone varchar,
+creationDate date NOT NULL);
+
 CREATE TABLE otp.stops (
     id SERIAL PRIMARY KEY,
     otp_id VARCHAR(64) UNIQUE NOT NULL,

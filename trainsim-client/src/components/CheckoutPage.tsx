@@ -50,6 +50,7 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
     }
 
     submitPayment  = async () => {
+        //need to get the price information
         const paymenDetail = {
                 "paymentAmount": 20,
                 "creditCardInfo": {
@@ -63,6 +64,16 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
 
     override render() {
         const { search, itinerary, setPage } = this.props;
+        console.log(this.props);
+        console.log(search.departDate.toDateString);
+
+        const orderSummary = new Array<ReactElement>();
+        orderSummary.push(<li>Traveler Number: {search.travelers}</li>);
+        orderSummary.push(<li>Depart: {search.source.name}</li>);
+        orderSummary.push(<li>Arrive: {search.target.name}</li>);
+        orderSummary.push(<li>Date: {search.departDate.toDateString()}</li>);
+        //need to fetch the price
+        orderSummary.push(<li>Total Amount: $20.00</li>);
 
         return <div>
             <SearchHeader search={search} />
@@ -257,6 +268,14 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                     <div className="column">
                         <div className="box">
                             Order Summary
+                                <div>
+                                    <ul>
+                                        {orderSummary}
+                                        {/* <li>From: {search.source}</li> */}
+                                        {/* <li>To: {search.target}</li> */}
+                                        {/* <li>Depart Date: {search.departDate.toDateString}</li> */}
+                                    </ul>
+                                </div>
                         </div>
                     </div>
                 </div>
