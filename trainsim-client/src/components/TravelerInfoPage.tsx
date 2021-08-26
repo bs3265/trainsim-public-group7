@@ -24,6 +24,7 @@ export default class TravelerInfoPage extends Component<TravelerInfoPageProps, T
     override render() {
         const { search, itinerary, setPage } = this.props;
 
+        console.log(this.props);
         const travelerBlocks = new Array<ReactElement>();
 
         for (let i = 1; i <= search.travelers; i++) {

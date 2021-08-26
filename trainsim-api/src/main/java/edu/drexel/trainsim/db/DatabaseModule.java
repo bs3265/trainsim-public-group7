@@ -12,6 +12,8 @@ import org.sql2o.Sql2o;
 
 import edu.drexel.trainsim.itinerary.db.GetAllStops;
 import edu.drexel.trainsim.itinerary.db.GetAllStopsImpl;
+import edu.drexel.trainsim.order.db.CreateOrder;
+import edu.drexel.trainsim.order.db.CreateOrderImpl;
 
 public class DatabaseModule extends AbstractModule {
     private final Sql2o db;
@@ -26,6 +28,7 @@ public class DatabaseModule extends AbstractModule {
     protected void configure() {
         bind(GetAllStops.class).to(GetAllStopsImpl.class);
         bind(GetOrCreateGoogleUser.class).to(GetOrCreateGoogleUserImpl.class);
+        bind(CreateOrder.class).to(CreateOrderImpl.class);
     }
 
     @Provides
