@@ -54,7 +54,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
 
     onSumbmit = () => {
         console.log(this.props)
-        
+
+
         this.submitPayment().then(
             // only valid card information
             // cardNumber: "1111222233334444",

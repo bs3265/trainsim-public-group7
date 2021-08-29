@@ -4,7 +4,6 @@ import Traveler from "../models/Traveler"
 
 export interface TravelerFormProps {
     // TODO
-    // traveler: Traveler;
 }
 
 export default (_: TravelerFormProps) => (

@@ -8,6 +8,7 @@ import ProgressTracker from "./PurchaseTracker";
 import SearchHeader from "./SearchHeader";
 import TravelerForm from "./TravelerForm";
 import Traveler from "../models/Traveler"
+import InputField from "./InputField"
 
 export interface TravelerInfoPageProps {
     search: ItinerarySearch;
@@ -16,27 +17,102 @@ export interface TravelerInfoPageProps {
 }
 
 interface TravelerInfoPageState {  
-    // traveler: Traveler
+    travelers:Traveler[]
+    // travelers:[]
 }
 
 export default class TravelerInfoPage extends Component<TravelerInfoPageProps, TravelerInfoPageState> {
     constructor(props: TravelerInfoPageProps) {
         super(props);
-        // this.state = {
-        //     traveler = Traveler()
+        const infos = new Array<Traveler>();
+        for (let i = 0; i < props.search.travelers; i++) {
+            infos.push(new Traveler("", "", "",""))
+        }
+
+        // const infos = [];
+        // for (let i = 0; i < props.search.travelers; i++) {
+        //     infos.push({firstName:""})
         // }
+        this.state = {travelers: infos}
     }
 
     override render() {
         const { search, itinerary, setPage } = this.props;
-
-        console.log(this.props);
         const travelerBlocks = new Array<ReactElement>();
 
+        console.log(this.state);
         for (let i = 1; i <= search.travelers; i++) {
             travelerBlocks.push(<div key={i} className="block pt-5">
                 <h3 className="title is-5">Traveler {i}</h3>
-                <TravelerForm />
+                <div>
+                    <div className="columns">
+                        <div className="column">
+                            <InputField
+                                label="First Name"
+                                htmlName="first-name"
+                                htmlType="text"
+                                icon="fas fa-user"
+                                required={true}
+                                value={this.state.travelers[i-1].firstName}
+                                setValue={v => {
+                                    let updateTraveler = [...this.state.travelers]
+                                    updateTraveler[i-1].firstName = v
+                                    this.setState({travelers:updateTraveler})
+                                }}
+                            />
+                        </div>
+                        <div className="column">
+                            <InputField
+                                label="Last Name"
+                                htmlName="last-name"
+                                htmlType="text"
+                                icon="fas fa-user"
+                                required={true}
+                                value={this.state.travelers[i-1].lastName}
+                                setValue={v => {
+                                    let updateTraveler = [...this.state.travelers]
+                                    updateTraveler[i-1].lastName = v
+                                    this.setState({travelers:updateTraveler})
+                                }}
+                            />
+                        </div>
+                    </div>
+                    <div className="columns">
+                        <div className="column">
+                            <InputField
+                                label="Email"
+                                htmlName="email"
+                                htmlType="email"
+                                icon="fas fa-at"
+                                required={true}
+                                value={this.state.travelers[i-1].email}
+                                setValue={v => {
+                                    let updateTraveler = [...this.state.travelers]
+                                    updateTraveler[i-1].email = v
+                                    this.setState({travelers:updateTraveler})
+                                }}
+                            />
+                        </div>
+                        <div className="column">
+                            <InputField
+                                label="Phone"
+                                htmlName="last-name"
+                                htmlType="tel"
+                                icon="fas fa-phone"
+                                required={true}
+                                value={this.state.travelers[i-1].phone}
+                                setValue={v => {
+                                    let updateTraveler = [...this.state.travelers]
+                                    updateTraveler[i-1].phone = v
+                                    this.setState({travelers:updateTraveler})
+                                }}
+                            />
+                        </div>
+                    </div>
+                </div>
+                {/* <TravelerForm 
+                    traveler={this.state.travelers[i-1]}
+                    /> */}
             </div>);
         }
 
