@@ -54,21 +54,23 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
 
     onSumbmit = () => {
         console.log(this.props)
-
-
-        this.createOrder().then(response => console.log(response))
         
-        // this.submitPayment().then(
-        //     response => {
-        //     if (response.status == 200 && response.data.code == 0) {
-        //         //make the call to backend
-                
-        //         this.props.setPage(<ConfirmationPage search={this.props.search} itinerary={this.props.itinerary} setPage={this.props.setPage} payment={this.state}/>)
-        //     } else {
-        //         alert(`Invalid Card Information! Please try again`);
-        //         console.log("false!!!")
-        //     }
-        // });
+        this.submitPayment().then(
+            // only valid card information
+            // cardNumber: "1111222233334444",
+            // cvv: "123"
+            response => {
+            if (response.status == 200 && response.data.code == 0) {
+
+                this.createOrder().then(response => {
+                    console.log(response)
+                    this.props.setPage(<ConfirmationPage search={this.props.search} itinerary={this.props.itinerary} setPage={this.props.setPage} payment={response.data}/>)
+                }) 
+            } else {
+                alert(`Invalid Card Information! Please try again`);
+                console.log("false!!!")
+            }
+        });
         
     }
 
