@@ -9,11 +9,13 @@ import SearchHeader from "./SearchHeader";
 import TravelerInfoPage from "./TravelerInfoPage";
 import CheckoutPage from "./CheckoutPage";
 import HomePage from "./HomePage";
+import Traveler from "../models/Traveler"
 
 export interface ConfirmationPageProps {
     search: ItinerarySearch;
     itinerary: Itinerary;
-    payment: any
+    payment: any;
+    travelers: Traveler[];
     setPage: (page: ReactElement) => void;
 }
 
@@ -26,8 +28,15 @@ export default class ConfirmationPage extends Component<ConfirmationPageProps, C
     }
 
     override render() {
-        const { search, itinerary, setPage, payment } = this.props;
-        console.log(payment)
+        const { search, itinerary, setPage, payment, travelers } = this.props;
+        console.log(this.props)
+        console.log(travelers)
+        const travelerNames = new Array<ReactElement>();
+        for (let i = 0; i < search.travelers; i++) {
+            let fullName = this.props.travelers[i].firstName + ' ' + this.props.travelers[i].lastName;
+            travelerNames.push(<li>{fullName}</li>)
+        }
+
         return <div>
             <SearchHeader search={search} />
             <ProgressTracker currentStage={PurchaseStage.Confirmation} />
@@ -52,6 +61,14 @@ export default class ConfirmationPage extends Component<ConfirmationPageProps, C
                                 <tr>
                                     <td>Purchase Date</td>
                                     <td>{this.props.payment.creationDate}</td>
+                                </tr>
+                                <tr>
+                                    <td>Number of Passengers</td>
+                                    <td>{this.props.search.travelers}</td>
+                                </tr>
+                                <tr>
+                                    <td>Passengers</td>
+                                    <td>{travelerNames}</td>
                                 </tr>
                             </tbody>
                         </table>

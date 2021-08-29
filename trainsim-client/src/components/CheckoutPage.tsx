@@ -9,11 +9,13 @@ import SearchHeader from "./SearchHeader";
 import TravelerInfoPage from "./TravelerInfoPage";
 import ConfirmationPage from "./ConfirmationPage"
 import axios from 'axios';
+import Traveler from "../models/Traveler"
 
 export interface CheckoutPageProps {
     search: ItinerarySearch;
     itinerary: Itinerary;
     setPage: (page: ReactElement) => void;
+    travelers: Traveler[];
 }
 
 interface CheckoutPageState { 
@@ -64,8 +66,7 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
             if (response.status == 200 && response.data.code == 0) {
 
                 this.createOrder().then(response => {
-                    console.log(response)
-                    this.props.setPage(<ConfirmationPage search={this.props.search} itinerary={this.props.itinerary} setPage={this.props.setPage} payment={response.data}/>)
+                    this.props.setPage(<ConfirmationPage search={this.props.search} itinerary={this.props.itinerary} setPage={this.props.setPage} payment={response.data} travelers={this.props.travelers}/>)
                 }) 
             } else {
                 alert(`Invalid Card Information! Please try again`);
@@ -107,9 +108,10 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
 
 
     override render() {
-        const { search, itinerary, setPage } = this.props;
+        const { search, itinerary, setPage, travelers } = this.props;
         console.log(this.props);
         console.log(search.departDate.toDateString);
+        console.log(travelers);
 
         const orderSummary = new Array<ReactElement>();
         orderSummary.push(<li>Traveler Number: {search.travelers}</li>);

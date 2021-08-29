@@ -6,7 +6,6 @@ import CheckoutPage from "./CheckoutPage";
 import NavButtonBar from "./NavButtonBar";
 import ProgressTracker from "./PurchaseTracker";
 import SearchHeader from "./SearchHeader";
-import TravelerForm from "./TravelerForm";
 import Traveler from "../models/Traveler"
 import InputField from "./InputField"
 
@@ -18,7 +17,6 @@ export interface TravelerInfoPageProps {
 
 interface TravelerInfoPageState {  
     travelers:Traveler[]
-    // travelers:[]
 }
 
 export default class TravelerInfoPage extends Component<TravelerInfoPageProps, TravelerInfoPageState> {
@@ -28,11 +26,6 @@ export default class TravelerInfoPage extends Component<TravelerInfoPageProps, T
         for (let i = 0; i < props.search.travelers; i++) {
             infos.push(new Traveler("", "", "",""))
         }
-
-        // const infos = [];
-        // for (let i = 0; i < props.search.travelers; i++) {
-        //     infos.push({firstName:""})
-        // }
         this.state = {travelers: infos}
     }
 
@@ -110,9 +103,6 @@ export default class TravelerInfoPage extends Component<TravelerInfoPageProps, T
                         </div>
                     </div>
                 </div>
-                {/* <TravelerForm 
-                    traveler={this.state.travelers[i-1]}
-                    /> */}
             </div>);
         }
 
@@ -129,7 +119,7 @@ export default class TravelerInfoPage extends Component<TravelerInfoPageProps, T
             </div>
             <NavButtonBar
                 onBack={() => console.log("Back")}
-                onNext={() => setPage(<CheckoutPage search={search} itinerary={itinerary} setPage={setPage} />)}
+                onNext={() => setPage(<CheckoutPage search={search} itinerary={itinerary} setPage={setPage} travelers={this.state.travelers}/>)}
             />
         </div>
     }
