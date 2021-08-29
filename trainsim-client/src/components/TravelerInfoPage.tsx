@@ -7,6 +7,7 @@ import NavButtonBar from "./NavButtonBar";
 import ProgressTracker from "./PurchaseTracker";
 import SearchHeader from "./SearchHeader";
 import TravelerForm from "./TravelerForm";
+import Traveler from "../models/Traveler"
 
 export interface TravelerInfoPageProps {
     search: ItinerarySearch;
@@ -14,11 +15,16 @@ export interface TravelerInfoPageProps {
     setPage: (page: ReactElement) => void;
 }
 
-interface TravelerInfoPageState { }
+interface TravelerInfoPageState {  
+    // traveler: Traveler
+}
 
 export default class TravelerInfoPage extends Component<TravelerInfoPageProps, TravelerInfoPageState> {
     constructor(props: TravelerInfoPageProps) {
         super(props);
+        // this.state = {
+        //     traveler = Traveler()
+        // }
     }
 
     override render() {
