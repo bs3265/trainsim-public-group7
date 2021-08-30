@@ -9,17 +9,29 @@ import SearchHeader from "./SearchHeader";
 import TravelerInfoPage from "./TravelerInfoPage";
 import ConfirmationPage from "./ConfirmationPage"
 import axios from 'axios';
+import Traveler from "../models/Traveler"
 
 export interface CheckoutPageProps {
     search: ItinerarySearch;
     itinerary: Itinerary;
     setPage: (page: ReactElement) => void;
+    travelers: Traveler[];
 }
 
 interface CheckoutPageState { 
     cardholderName: string,
     cardNumber: string,
-    cvv:string
+    cvv:string,
+    expiration: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    phone: string,
+    address1: string,
+    address2: string,
+    city: string,
+    state: string,
+    zipCode: string
 }
 
 export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutPageState> {
@@ -28,19 +40,34 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
         this.state = {
             cardholderName:'',
             cardNumber: '',
-            cvv:''
+            cvv:'',
+            expiration:'',
+            firstName: '',
+            lastName:'',
+            email: '',
+            phone: '',
+            address1: '',
+            address2: '',
+            city: '',
+            state: '',
+            zipCode: ''
         }
     }
 
     onSumbmit = () => {
-        console.log(this.state)
-        
+        console.log(this.props)
+
+
         this.submitPayment().then(
+            // only valid card information
+            // cardNumber: "1111222233334444",
+            // cvv: "123"
             response => {
             if (response.status == 200 && response.data.code == 0) {
-                //make the call to backend
-                
-                this.props.setPage(<ConfirmationPage search={this.props.search} itinerary={this.props.itinerary} setPage={this.props.setPage} payment={this.state}/>)
+
+                this.createOrder().then(response => {
+                    this.props.setPage(<ConfirmationPage search={this.props.search} itinerary={this.props.itinerary} setPage={this.props.setPage} payment={response.data} travelers={this.props.travelers}/>)
+                }) 
             } else {
                 alert(`Invalid Card Information! Please try again`);
                 console.log("false!!!")
@@ -62,10 +89,29 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
         return response;
     }
 
+    createOrder  = async () => {
+        //need to get the price information
+        const orderDetail ={
+            "email": this.state.email,
+            "depart":this.props.search.source.name,
+            "arrive":this.props.search.target.name,
+            "ticketNumber":this.props.search.travelers,
+            "passenger": this.state.firstName + ' ' + this.state.lastName,
+            "tripType": "ONEWAY",
+            "amount": 20.0,
+            "phone": this.state.phone
+        }  ;
+        const response = await axios.post('https://localhost:8000/api/order', orderDetail);
+        return response;
+    }
+
+
+
     override render() {
-        const { search, itinerary, setPage } = this.props;
+        const { search, itinerary, setPage, travelers } = this.props;
         console.log(this.props);
         console.log(search.departDate.toDateString);
+        console.log(travelers);
 
         const orderSummary = new Array<ReactElement>();
         orderSummary.push(<li>Traveler Number: {search.travelers}</li>);
@@ -124,8 +170,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         icon="fas fa-calendar"
                                         autoComplete="cc-exp"
                                         required={true}
-                                        value=""
-                                        setValue={v => console.log(v)}
+                                        value={this.state.expiration}
+                                        setValue={v => this.setState({expiration:v})}
                                     />
                                 </div>
                                 <div className="column">
@@ -151,8 +197,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         icon="fas fa-user"
                                         autoComplete="billing fname"
                                         required={true}
-                                        value=""
-                                        setValue={v => console.log(v)}
+                                        value={this.state.firstName}
+                                        setValue={v => this.setState({firstName:v})}
                                     />
                                 </div>
                                 <div className="column">
@@ -163,8 +209,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         icon="fas fa-user"
                                         autoComplete="billing lname"
                                         required={true}
-                                        value=""
-                                        setValue={v => console.log(v)}
+                                        value={this.state.lastName}
+                                        setValue={v => this.setState({lastName:v})}
                                     />
                                 </div>
                             </div>
@@ -177,8 +223,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         icon="fas fa-at"
                                         autoComplete="billing email"
                                         required={true}
-                                        value=""
-                                        setValue={v => console.log(v)}
+                                        value={this.state.email}
+                                        setValue={v => this.setState({email:v})}
                                     />
                                 </div>
                                 <div className="column field">
@@ -189,8 +235,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         icon="fas fa-phone"
                                         autoComplete="billing tel"
                                         required={true}
-                                        value=""
-                                        setValue={v => console.log(v)}
+                                        value={this.state.phone}
+                                        setValue={v => this.setState({phone:v})}
                                     />
                                 </div>
                             </div>
@@ -203,8 +249,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         icon="fas fa-map-marker-alt"
                                         autoComplete="billing address-line1"
                                         required={true}
-                                        value=""
-                                        setValue={v => console.log(v)}
+                                        value={this.state.address1}
+                                        setValue={v => this.setState({address1:v})}
                                     />
                                 </div>
                                 <div className="column">
@@ -215,8 +261,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         icon="fas fa-map-marker-alt"
                                         autoComplete="billing address-line2"
                                         required={false}
-                                        value=""
-                                        setValue={v => console.log(v)}
+                                        value={this.state.address2}
+                                        setValue={v => this.setState({address2:v})}
                                     />
                                 </div>
                             </div>
@@ -229,8 +275,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         icon="fas fa-city"
                                         autoComplete="billing locality"
                                         required={true}
-                                        value=""
-                                        setValue={v => console.log(v)}
+                                        value={this.state.city}
+                                        setValue={v => this.setState({city:v})}
                                     />
                                 </div>
                                 <div className="column">
@@ -241,8 +287,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         icon="fas fa-map"
                                         autoComplete="billing region"
                                         required={true}
-                                        value=""
-                                        setValue={v => console.log(v)}
+                                        value={this.state.state}
+                                        setValue={v => this.setState({state:v})}
                                     />
                                 </div>
                                 <div className="column">
@@ -253,8 +299,8 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                         icon="fas fa-map-pin"
                                         autoComplete="billing postal-code"
                                         required={true}
-                                        value=""
-                                        setValue={v => console.log(v)}
+                                        value={this.state.zipCode}
+                                        setValue={v => this.setState({zipCode:v})}
                                     />
                                 </div>
                             </div>
@@ -271,9 +317,6 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                                 <div>
                                     <ul>
                                         {orderSummary}
-                                        {/* <li>From: {search.source}</li> */}
-                                        {/* <li>To: {search.target}</li> */}
-                                        {/* <li>Depart Date: {search.departDate.toDateString}</li> */}
                                     </ul>
                                 </div>
                         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import InputField from "./InputField";
+import Traveler from "../models/Traveler"
 
 export interface TravelerFormProps {
     // TODO
@@ -15,7 +16,7 @@ export default (_: TravelerFormProps) => (
                     htmlType="text"
                     icon="fas fa-user"
                     required={true}
-                    value="Fake"
+                    value=""
                     setValue={v => console.log(v)}
                 />
             </div>
