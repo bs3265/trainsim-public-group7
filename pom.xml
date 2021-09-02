@@ -11,6 +11,7 @@
   <modules>
       <module>trainsim-api</module>
       <module>trainsim-client</module>
+      <module>trainsim-stripe-service</module>
   </modules>
 
   <build>
