@@ -44,7 +44,7 @@ services:
             - 5432:5432
     trainsim-stripe-service:
         image: maven:3.8.1-openjdk-11
-        command: mvn -f exec:java -pl trainsim-stripe-service
+        command: mvn exec:java -pl trainsim-stripe-service
         working_dir: /source
         volumes:
             - .:/source
