@@ -17,6 +17,11 @@ import edu.drexel.trainsim.web.UserLoginController;
 import io.javalin.Javalin;
 import io.javalin.plugin.json.JavalinJson;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public class App {
     public static void main(String[] args) throws Exception {
         // Wait until OTP is fully initilized
@@ -48,6 +53,26 @@ public class App {
             config.enableDevLogging();
             config.enableCorsForAllOrigins();
         });
+
+        //load properties
+        Properties prop = new Properties();
+        InputStream input = null;
+
+        try {
+            input = new FileInputStream("app.properties");
+            prop.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (input != null ) {
+                try {
+                    input.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
 
         // Setup controllers
         injector.getInstance(ItineraryController.class).bindRoutes(app);

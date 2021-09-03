@@ -15,7 +15,6 @@ export interface CheckoutPageProps {
     itinerary: Itinerary;
     setPage: (page: ReactElement) => void;
 }
-
 interface CheckoutPageState { 
     cardholderName: string,
     cardNumber: string,
@@ -280,6 +279,7 @@ export default class CheckoutPage extends Component<CheckoutPageProps, CheckoutP
                     </div>
                 </div>
             </div>
+            <script src="https://www.paypal.com/sdk/js?client-id=AWAfAkUQfr14Ydr5R6n7e1DyPDTDKrDRZlPxWsJyI62G6l394mrLTxGkrF5mcMKHhh9D2f-vKrtoC47V"></script>
             <NavButtonBar
                 onBack={() => setPage(<TravelerInfoPage search={search} itinerary={itinerary} setPage={setPage} />)}
                 // onNext={() => setPage(<ConfirmationPage search={search} itinerary={itinerary} setPage={setPage} />)} />

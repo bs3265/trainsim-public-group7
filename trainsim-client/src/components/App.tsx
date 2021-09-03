@@ -1,16 +1,28 @@
 import React, { Component, ReactElement } from "react";
 import GoogleLoginField from "./GoogleLoginField";
 import HomePage from "./HomePage";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 interface AppState {
     currentPage: ReactElement;
 }
+
+const PayPalOpts = {
+    "client-id": "AWAfAkUQfr14Ydr5R6n7e1DyPDTDKrDRZlPxWsJyI62G6l394mrLTxGkrF5mcMKHhh9D2f-vKrtoC47V",
+    currency: "USD",
+    intent: "capture",
+    "data-client-token": "abc123xyz==",
+};
+
 
 export default class App extends Component<{}, AppState> {
     constructor(props: {}) {
         super(props);
         this.setPage = this.setPage.bind(this);
         this.state = { currentPage: <HomePage setPage={this.setPage} /> };
+        <PayPalScriptProvider options={{ PayPalOpts }}>
+            <PayPalButtons style={{ layout: "horizontal" }} />
+        </PayPalScriptProvider>
     }
 
     setPage(page: ReactElement) {
