@@ -10,8 +10,8 @@ import SearchResultRoundTripReturn from "./SearchResultPageRoundTripReturn";
 
 interface SearchResultPageProps {
     search: ItinerarySearch;
-    search_return: ItinerarySearch;
     itineraries: readonly Itinerary[];
+    search_return: ItinerarySearch;
     itineraries_return: readonly Itinerary[];
     setPage: (page: ReactElement) => void;
 }
@@ -25,7 +25,7 @@ export default class SearchResultPageRoundTrip extends Component<SearchResultPag
         const { search, search_return, itineraries, itineraries_return, setPage } = this.props;
 
         const message = itineraries.length !== 0 ?
-            "ROUND TRIP PAGE -- Please select one of the following itineraries." :
+            "Please select one of the following itineraries for you departure." :
             "No results found.";
 
         return <div>
@@ -35,11 +35,9 @@ export default class SearchResultPageRoundTrip extends Component<SearchResultPag
             <hr />
 
             <div className="content">
-                <h2 className="title is-3">Starting Itineraries</h2>
+                <h2 className="title is-3">Starting Round Trip Itineraries</h2>
                 <p>{message}</p>
 
-
-                Pick the Starting Itererary: 
                 {itineraries.map(i =>
                     <SearchResultItem
                         key={i.id}

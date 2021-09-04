@@ -9,8 +9,8 @@ import TravelerInfoPage from "./TravelerInfoPage";
 
 interface SearchResultPageProps {
     search_depart: ItinerarySearch;
-    search: ItinerarySearch;
     itinerary_depart: Itinerary ;
+    search: ItinerarySearch;
     itineraries: readonly Itinerary[];
     setPage: (page: ReactElement) => void;
 }
@@ -21,10 +21,10 @@ export default class SearchResultPageRoundTripReturn extends Component<SearchRes
     }
 
     override render() {
-        const { search, itineraries, itinerary_depart, setPage } = this.props;
+        const { search, search_depart, itineraries, itinerary_depart, setPage } = this.props;
 
         const message = itineraries.length !== 0 ?
-            "RETURN: Please select one of the following itineraries." :
+            "Please select one of the following itineraries for you return trip." :
             "No results found.";
 
         return <div>
@@ -34,14 +34,14 @@ export default class SearchResultPageRoundTripReturn extends Component<SearchRes
             <hr />
 
             <div className="content">
-                <h2 className="title is-3">Itineraries</h2>
+                <h2 className="title is-3">Round Trip Return Itineraries</h2>
                 <p>{message}</p>
 
                 {itineraries.map(i =>
                     <SearchResultItem
                         key={i.id}
                         itinerary={i}
-                        select={() => setPage(<TravelerInfoPage search={search} search_return={search} itinerary={itinerary_depart} itinerary_return={i} roundTrip={true} setPage={setPage} />)}
+                        select={() => setPage(<TravelerInfoPage search={search_depart} search_return={search} itinerary={itinerary_depart} itinerary_return={i} roundTrip={true} setPage={setPage} />)}
                     />
                 )}
 
