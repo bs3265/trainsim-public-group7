@@ -101,6 +101,22 @@ Once the backend system was in place with a robust test suite, the front end cod
 
 For our team, we felt like we missed one of the key parts of architecting and designing the system, which is making the decisions about the design based on the requirements and the abilities of the team that will ultimately build and operate the system.  
 
+### Sanity Tests
+
+API sanity tests have been written in Python.
+Libraries required:
+- python
+- pytest pytest-html
+- requests
+- jsonschema
+
+Command to install dependencies ```pip install -U <library>```
+
+These tests have only checking status code 200 against APIs on backend.
+Command to run tests at root of API project : ```pytest```
+or ```pytest -sv --html report.html``` to generate an HTML report.
+The HTML report will be generated at root of entire project.
+
 ### Project Details: 
 
 - [User Scenarios](https://docs.google.com/document/d/17qXcQV29qGFcG-WD5if1wZUmjGl9ywvFJMxEpQ1JR8Y/edit)
@@ -210,19 +226,3 @@ docker run --network="trainsim_default" -p 8080:80 -e "PGADMIN_DEFAULT_EMAIL=me@
 ```
 
 Then navigate to http://localhost:8080/ and login with user "me@example.org" and password "password". Then right click "Servers" and select "Create > Server...". Enter "trainsim-db" as the name and then in the "Connection" tab, enter "trainsim-db", "5432", "user", and "password" as the Host, Port, Username and Password respectively. (I have had issues with this in the past. Contact the TAs if you cannot get it working.)
-
-### Sanity Tests
-
-API sanity tests have been written in Python. 
-Libraries required:
-- python
-- pytest pytest-html
-- requests
-- jsonschema
-
-Command to install dependencies ```pip install -U <library>```
-
-These tests have only checking status code 200 against APIs on backend.
-Command to run tests at root of API project : ```pytest``` 
-or ```pytest -sv --html report.html``` to generate an HTML report.
-The HTML report will be generated at root of entire project.
