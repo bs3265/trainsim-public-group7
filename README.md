@@ -2,13 +2,6 @@
 
 A work-in-progress application to simulate purchasing train tickets. This project is used for an assignment of SE 577 at Drexel University.
 
-### Project Details: 
-
-- [User Scenarios](https://docs.google.com/document/d/17qXcQV29qGFcG-WD5if1wZUmjGl9ywvFJMxEpQ1JR8Y/edit)
-- [Technology Stack](https://docs.google.com/document/d/17qXcQV29qGFcG-WD5if1wZUmjGl9ywvFJMxEpQ1JR8Y/edit)
-- [Database Schema](https://dbdiagram.io/d/60df44220b1d8a6d39649bfa)
-- [Template Repository](https://github.com/jlefever/trainsim-public)
-
 ### Group Members
 
 | Name          | Role                                     |
@@ -20,19 +13,19 @@ A work-in-progress application to simulate purchasing train tickets. This projec
 
 ### Plan and Progress
 
-Our initial plan was to translate the requirements into a set of features, required and optional, in as GitHub issues.  We started with a spreadsheet of the features and went through the provided design to determine the issues that existed with the code.  We decided the priority of the features & issues and our team members took up those issues.  Our architect created the documentation for the design including the component, sequence, and class diagrams for the system.
+Our initial plan was to translate the requirements into a set of features, required and optional, as GitHub issues.  We started with a spreadsheet of the features and went through the provided design to determine the issues that existed with the code.  We decided the priority of the features & issues and our team members took up those issues.  Our architect created the documentation for the design including the component, sequence, and class diagrams for the system.
 
 We have been able to expand on the functionality of the system, but there are still many aspects that we did not have time to complete.  We discuss the issues we encountered in the next section.
 
-- [x] Scenario 3.1.1 - Search Tickets Scenario -- added Round Trip functionality
+- [X] Scenario 3.1.1 - Search Tickets Scenario -- added Round Trip functionality
 - [ ] Scenario 3.1.2 - Check Details Scenario
 - [ ] Scenario 3.1.3 - Add to Cart Scenario
 - [x] Scenario 3.1.4 - Enter Traveler Info Scenario - Completed
 - [x] Scenario 3.1.5 - Enter Payment Info Scenario - Completed, added paypal integration
 - [x] Scenario 3.1.6 - Check Out Scenario - Completed 
-- [ ] Scenario 3.1.7 - Check Out (Guest) Scenario - Completed?
+- [x] Scenario 3.1.7 - Check Out (Guest) Scenario - Completed
 - [x] Scenario 3.1.8 - Check Out (Signed-In User) Scenario - Completed
-- [ ] Scenario 3.1.9 - Sign In Scenario - Completed (provided)
+- [x] Scenario 3.1.9 - Sign In Scenario - Completed (provided)
 - [ ] Scenario 3.1.10 - View Order History Scenario
 - [ ] Scenario 3.2.11 - Request Refund *Optional* Scenario
 - [ ] Scenario 3.2.12 - Browse Destinations *Optional* Scenario
@@ -44,23 +37,57 @@ We have been able to expand on the functionality of the system, but there are st
 - [ ] Scenario 4.2.4 - Display Dashboards *Optional* Scenario
 - [ ] Scenario 4.2.5 - Handle Refund Requests *Optional* Scenario
 
+### Architecture Documents
+	
+* Component diagram for the overall system 
+    * [Train Ticketing System Component Diagram - server side only]()
+* Sequence diagrams for each implemented user scenario 
+    * [Launch Train Ticketing System](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%201%20Launch%20Train%20Ticketing%20System%20Sequence%20Diagram%20SOA.pdf)			
+    * [User Login](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%202%20User%20Login%20Sequence%20Diagram%20SOA.pdf)
+    * [Search Tickets](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%203%20Search%20Tickets%20Sequence%20Digram%20SOA.pdf)
+    * [Select Itinerary](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%204%20Select%20Itinerary%20Sequence%20Diagram%20SOA.pdf)	
+    * [Enter Traveler Info](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%205%20Enter%20Traveler%20Info%20Sequence%20Diagram%20SOA.pdf)
+    * [Enter Payment Info and Checkout](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%206%20Enter%20Payment%20Info%20and%20Checkout%20Sequence%20Diagram%20SOA.pdf)
+    * [Manage Order by Admin](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%207%20Manage%20Order%20By%20Admin%20Sequence%20Diagram%20SOA.pdf)
+    * [Manage Customer Info by Admin](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%208%20Manage%20Customer%20Info%20By%20Admin%20Sequence%20Diagram%20SOA.pdf)	
+    * [Request a Refund](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%209%20Request%20a%20Refund%20Sequence%20Diagram%20SOA.pdf)
+    * [View Order History](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%2010%20View%20Order%20History%20Sequence%20Diagram%20SOA.pdf)
+* Class diagram for the server-side
+    * trainsim-api
+        * [trainsim-api - main class diagram](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/trainsim-api%20Class%20Diagram%20SOA.pdf)				
+        * [trainsim-api db component](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/trainsim-api%20db%20Component%20Class%20Diagram%20SOA.pdf)			
+        * [trainsim-api itinerary component](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/trainsim-api%20itinerary%20Component%20Class%20Diagram%20SOA.pdf)			
+        * [trainsim-api order component](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/trainsim-api%20order%20Component%20Class%20Diagram%20SOA.pdf)			
+        * [trainsim-api web component](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/trainsim-api%20web%20Component%20Class%20Diagram%20SOA.pdf)		
+     * [trainsim-stripe](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/trainsim-stripe%20Payment%20System%20Class%20Diagram%20SOA.pdf)
+* Quality attribute utility tree
+    * [Train Ticketing System QA Utility Tree](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Train%20Ticketing%20System%20QA%20Utility%20Tree.pdf)
+* Tactics applied for the quality attributes specified in the utility tree			
+    * [Modifiability Tactics](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Modifiability%20Tactics.pdf)
+    * [Security Tactics](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Security%20Tactics.pdf)
+    * [Performance Tactics](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Performance%20Tactics.pdf)
+    * [Usability Tactics](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Usability%20Tactics.pdf)		
+* Extras
+    * [Quality Attribute Tactics Scenarios](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Quality%20Attributes%20Tactics%20Scenarios.docx)
 
 ### Lesson Learned and Suggestions for Future Classes
 
 Our group met often to discuss what was required for the assignment and we quickly had the sample framework up and running.  
 
-There were a few things that made this group assignment difficult for our team.  Although having a framework and working example to start with seems helpful, we struggled with several aspects of the project
+There were a few things that made this group assignment difficult for our team.  Although having a framework and working example to start with seems helpful, we struggled with several aspects of the project:
 
-1. The first was that our team members did not have experience with javascript, TypeScript,and frontend programming in general since we have all work on backend systems.  We spent a lot of time understanding what was happening in the front end code even though the functionality of the UI was fairly straight forward.
-2. The second, and most important, was starting with a working version that accomplished many of the major features, seems helpful but in the end, we felt like we were constantly reverse engineering the solution instead of architecting the solution ourselves.  However, it took us a while to get a grasp on the provided framework to realize this.  An initial walk through of the design and code would have been very helpful.  So by the time we had come up to speed on the design that was provided, we felt we needed to use what we had to make as much progress as possible.  However, what the provided framework really did was remove the ability for the team to iteratively create the solution and get momentum from working as a team to create the initial building blocks of the system.  We'll discuss this more in the Suggestions section below.  
-3. Another feature that the provided framework was missing was a suite of tests for the functionality that was provided.  Writing tests while code is developed is best practice for several reasons, one of which is to help developers that inherit the code understand the work that has been done.  Another benefit is to provide the means for new features to quickly be added by showing when the added changes have unintended consequences on existing functionality.  Instead we got this:
-
+1. The first was that our team members did not have experience with javascript, TypeScript,and frontend programming in general since we have all mostly worked on backend systems.  We spent a lot of time understanding what was happening in the front end code even though the functionality of the UI was fairly straight forward.
+2. The second, and most important, was starting with a working version that accomplished many of the major features, seems helpful but in the end, we felt like we were constantly reverse engineering the solution instead of architecting the solution ourselves.  It took us a while to get a grasp on the provided framework to realize this.  An initial walk through of the design and code would have been very helpful.  So by the time we had come up to speed on the design that was provided, we felt we needed to use what we had to make as much progress as possible.  However, what the provided framework really did was remove the ability for the team to iteratively create the solution and get momentum from working as a team to create the initial building blocks of the system.  We'll discuss this more in the Suggestions section below.  
+3. A feature that the provided framework was missing was a suite of tests for the functionality that was provided.  Writing tests while code is being developed is best practice for several reasons, one of which is to help developers that inherit the code understand the work that has been done.  Another benefit is to provide the means for new features to quickly be added by showing when the added changes have unintended consequences on existing functionality.  Instead we got this:
+```javascript
     /**
      * Rigorous Test :-)
      */
     @Test
-    public void shouldAnswerWithTrue()  { assertTrue( true ); }
-
+    public void shouldAnswerWithTrue()  { 
+        assertTrue( true ); 
+    }
+```
 
 Those issues aside, overall, we ended up learning a lot about about javascript and splitting out microservices, but not as much about architecting a solution from the beginning.  
 
@@ -70,9 +97,16 @@ We think the requirements for project could have been given to the groups much e
 
 Then we have could iteratively started implementing the backend part of the design.  Given our Java and Postgres experience from previous classes, we could have started with creating a single API and database table and then expanded that pattern to the other APIs per our design, adding them to docker containers and integrating with the other components of the system like Open Trip Planner, Stripe, etc. 
 
-Once the backend system was in place with a robust test suite, the front end code could be added to provide the interface to the already functioning backend system.  Or the front end code could have been developed in parallel the back end code as the initial components were created.  Approaching the implementation in an iterative fashion would allow the team to build an initial set of webpages and get the momentum from those initial learnings that is expanded as more functionality is added.  The acceptance tests could also be expanded to interact with the UI using a tool like BDD/cucumber and Selenium.
+Once the backend system was in place with a robust test suite, the front end code could be added to provide the interface to the already functioning backend system.  Or the front end code could have been developed in parallel the back end code as the initial components were created.  Approaching the implementation in an iterative fashion would allow the team to build an initial set of webpages and get the momentum from those initial learnings that are expanded as more functionality is added.  The acceptance tests could also be expanded to interact with the UI using a tool like BDD/cucumber and Selenium.
 
 For our team, we felt like we missed one of the key parts of architecting and designing the system, which is making the decisions about the design based on the requirements and the abilities of the team that will ultimately build and operate the system.  
+
+### Project Details: 
+
+- [User Scenarios](https://docs.google.com/document/d/17qXcQV29qGFcG-WD5if1wZUmjGl9ywvFJMxEpQ1JR8Y/edit)
+- [Technology Stack](https://docs.google.com/document/d/17qXcQV29qGFcG-WD5if1wZUmjGl9ywvFJMxEpQ1JR8Y/edit)
+- [Database Schema](https://dbdiagram.io/d/60df44220b1d8a6d39649bfa)
+- [Template Repository](https://github.com/jlefever/trainsim-public)
 
 ## Getting Started
 
