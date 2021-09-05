@@ -24,25 +24,25 @@ Our initial plan was to translate the requirements into a set of features, requi
 
 We have been able to expand on the functionality of the system, but there are still many aspects that we did not have time to complete.  We discuss the issues we encountered in the next section.
 
-Scenario 3.1.1 - Search Tickets Scenario -- added Round Trip functionality
-Scenario 3.1.2 - Check Details Scenario
-Scenario 3.1.3 - Add to Cart Scenario
-Scenario 3.1.4 - Enter Traveler Info Scenario - Completed
-Scenario 3.1.5 - Enter Payment Info Scenario - Completed, added paypal integration
-Scenario 3.1.6 - Check Out Scenario - Completed 
-Scenario 3.1.7 - Check Out (Guest) Scenario - Completed?
-Scenario 3.1.8 - Check Out (Signed-In User) Scenario - Completed
-Scenario 3.1.9 - Sign In Scenario - Completed (provided)
-Scenario 3.1.10 - View Order History Scenario
-Scenario 3.2.11 - Request Refund `Optional` Scenario
-Scenario 3.2.12 - Browse Destinations `Optional` Scenario
-Scenario 3.2.13 - View Map of Destinations `Optional` Scenario
-Scenario 3.2.14 - View Attractions `Optional` Scenario
-Scenario 4.1.1 - Manage Customers Info Scenario - In Progress
-Scenario 4.1.2 - Manage Customer Orders Scenario - In Progress
-Scenario 4.2.3 - Admin Adds Customer Order Scenario
-Scenario 4.2.4 - Display Dashboards `Optional` Scenario
-Scenario 4.2.5 - Handle Refund Requests `Optional` Scenario
+- [x] Scenario 3.1.1 - Search Tickets Scenario -- added Round Trip functionality
+- [ ] Scenario 3.1.2 - Check Details Scenario
+- [ ] Scenario 3.1.3 - Add to Cart Scenario
+- [x] Scenario 3.1.4 - Enter Traveler Info Scenario - Completed
+- [x] Scenario 3.1.5 - Enter Payment Info Scenario - Completed, added paypal integration
+- [x] Scenario 3.1.6 - Check Out Scenario - Completed 
+- [ ] Scenario 3.1.7 - Check Out (Guest) Scenario - Completed?
+- [x] Scenario 3.1.8 - Check Out (Signed-In User) Scenario - Completed
+- [ ] Scenario 3.1.9 - Sign In Scenario - Completed (provided)
+- [ ] Scenario 3.1.10 - View Order History Scenario
+- [ ] Scenario 3.2.11 - Request Refund *Optional* Scenario
+- [ ] Scenario 3.2.12 - Browse Destinations *Optional* Scenario
+- [ ] Scenario 3.2.13 - View Map of Destinations *Optional* Scenario
+- [ ] Scenario 3.2.14 - View Attractions *Optional* Scenario
+- [ ] Scenario 4.1.1 - Manage Customers Info Scenario - In Progress
+- [ ] Scenario 4.1.2 - Manage Customer Orders Scenario - In Progress
+- [ ] Scenario 4.2.3 - Admin Adds Customer Order Scenario
+- [ ] Scenario 4.2.4 - Display Dashboards *Optional* Scenario
+- [ ] Scenario 4.2.5 - Handle Refund Requests *Optional* Scenario
 
 
 ### Lesson Learned and Suggestions for Future Classes
