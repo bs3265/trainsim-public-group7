@@ -17,7 +17,6 @@ export interface CheckoutPageProps {
     setPage: (page: ReactElement) => void;
     travelers: Traveler[];
 }
-
 interface CheckoutPageState { 
     cardholderName: string,
     cardNumber: string,
