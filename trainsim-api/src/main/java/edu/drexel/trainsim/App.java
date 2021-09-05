@@ -54,24 +54,6 @@ public class App {
             config.enableCorsForAllOrigins();
         });
 
-        //load properties
-        Properties prop = new Properties();
-        InputStream input = null;
-
-        try {
-            input = new FileInputStream("app.properties");
-            prop.load(input);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (input != null ) {
-                try {
-                    input.close();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
 
 
         // Setup controllers
