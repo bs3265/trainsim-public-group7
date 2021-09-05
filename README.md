@@ -40,35 +40,35 @@ We have been able to expand on the functionality of the system, but there are st
 ### Architecture Documents
 	
 * Component diagram for the overall system 
-    1. Train Ticketing System Component Diagram - server side only
+    * [Train Ticketing System Component Diagram - server side only]()
 * Sequence diagrams for each implemented user scenario 
-    * Launch Train Ticketing System			
-    * User Login
-    * Search Tickets
-    * Select Itinerary	
-    * Enter Traveler Info
-    * Enter Payment Info and Checkout
-    * Manage Order by Admin
-    * Manage Customer Info by Admin	
-    * Request a Refund
-    * View Order History
+    * [Launch Train Ticketing System](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%201%20Launch%20Train%20Ticketing%20System%20Sequence%20Diagram%20SOA.pdf)			
+    * [User Login](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%202%20User%20Login%20Sequence%20Diagram%20SOA.pdf)
+    * [Search Tickets](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%203%20Search%20Tickets%20Sequence%20Digram%20SOA.pdf)
+    * [Select Itinerary](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%204%20Select%20Itinerary%20Sequence%20Diagram%20SOA.pdf)	
+    * [Enter Traveler Info](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%205%20Enter%20Traveler%20Info%20Sequence%20Diagram%20SOA.pdf)
+    * [Enter Payment Info and Checkout](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%206%20Enter%20Payment%20Info%20and%20Checkout%20Sequence%20Diagram%20SOA.pdf)
+    * [Manage Order by Admin](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%207%20Manage%20Order%20By%20Admin%20Sequence%20Diagram%20SOA.pdf)
+    * [Manage Customer Info by Admin](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%208%20Manage%20Customer%20Info%20By%20Admin%20Sequence%20Diagram%20SOA.pdf)	
+    * [Request a Refund](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%209%20Request%20a%20Refund%20Sequence%20Diagram%20SOA.pdf)
+    * [View Order History](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Use%20Case%2010%20View%20Order%20History%20Sequence%20Diagram%20SOA.pdf)
 * Class diagram for the server-side
     * trainsim-api
-        * trainsim-api - main class diagram				
-        * trainsim-api db component			
-        * trainsim-api itinerary component			
-        * trainsim-api order component				
-        * trainsim-api web component			
-     * trainsim-stripe
+        * [trainsim-api - main class diagram](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/trainsim-api%20Class%20Diagram%20SOA.pdf)				
+        * [trainsim-api db component](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/trainsim-api%20db%20Component%20Class%20Diagram%20SOA.pdf)			
+        * [trainsim-api itinerary component](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/trainsim-api%20itinerary%20Component%20Class%20Diagram%20SOA.pdf)			
+        * [trainsim-api order component](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/trainsim-api%20order%20Component%20Class%20Diagram%20SOA.pdf)			
+        * [trainsim-api web component](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/trainsim-api%20web%20Component%20Class%20Diagram%20SOA.pdf)		
+     * [trainsim-stripe](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/trainsim-stripe%20Payment%20System%20Class%20Diagram%20SOA.pdf)
 * Quality attribute utility tree
-    * Train Ticketing System QA Utility Tree
+    * [Train Ticketing System QA Utility Tree](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Train%20Ticketing%20System%20QA%20Utility%20Tree.pdf)
 * Tactics applied for the quality attributes specified in the utility tree			
-    * Modifiability Tactics
-    * Security Tactics
-    * Performance Tactics
-    * Usability Tactics		
+    * [Modifiability Tactics](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Modifiability%20Tactics.pdf)
+    * [Security Tactics](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Security%20Tactics.pdf)
+    * [Performance Tactics](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Performance%20Tactics.pdf)
+    * [Usability Tactics](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Usability%20Tactics.pdf)		
 * Extras
-    * Quality Attribute Tactics Scenarios
+    * [Quality Attribute Tactics Scenarios](https://github.com/bs3265/trainsim-public-group7/blob/master/architecture-documents/Quality%20Attributes%20Tactics%20Scenarios.docx)
 
 ### Lesson Learned and Suggestions for Future Classes
 
