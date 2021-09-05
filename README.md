@@ -2,13 +2,6 @@
 
 A work-in-progress application to simulate purchasing train tickets. This project is used for an assignment of SE 577 at Drexel University.
 
-### Project Details: 
-
-- [User Scenarios](https://docs.google.com/document/d/17qXcQV29qGFcG-WD5if1wZUmjGl9ywvFJMxEpQ1JR8Y/edit)
-- [Technology Stack](https://docs.google.com/document/d/17qXcQV29qGFcG-WD5if1wZUmjGl9ywvFJMxEpQ1JR8Y/edit)
-- [Database Schema](https://dbdiagram.io/d/60df44220b1d8a6d39649bfa)
-- [Template Repository](https://github.com/jlefever/trainsim-public)
-
 ### Group Members
 
 | Name          | Role                                     |
@@ -24,7 +17,7 @@ Our initial plan was to translate the requirements into a set of features, requi
 
 We have been able to expand on the functionality of the system, but there are still many aspects that we did not have time to complete.  We discuss the issues we encountered in the next section.
 
-- [x] Scenario 3.1.1 - Search Tickets Scenario -- added Round Trip functionality
+- [X] Scenario 3.1.1 - Search Tickets Scenario -- added Round Trip functionality
 - [ ] Scenario 3.1.2 - Check Details Scenario
 - [ ] Scenario 3.1.3 - Add to Cart Scenario
 - [x] Scenario 3.1.4 - Enter Traveler Info Scenario - Completed
@@ -32,7 +25,7 @@ We have been able to expand on the functionality of the system, but there are st
 - [x] Scenario 3.1.6 - Check Out Scenario - Completed 
 - [x] Scenario 3.1.7 - Check Out (Guest) Scenario - Completed
 - [x] Scenario 3.1.8 - Check Out (Signed-In User) Scenario - Completed
-- [ ] Scenario 3.1.9 - Sign In Scenario - Completed (provided)
+- [x] Scenario 3.1.9 - Sign In Scenario - Completed (provided)
 - [ ] Scenario 3.1.10 - View Order History Scenario
 - [ ] Scenario 3.2.11 - Request Refund *Optional* Scenario
 - [ ] Scenario 3.2.12 - Browse Destinations *Optional* Scenario
@@ -44,6 +37,38 @@ We have been able to expand on the functionality of the system, but there are st
 - [ ] Scenario 4.2.4 - Display Dashboards *Optional* Scenario
 - [ ] Scenario 4.2.5 - Handle Refund Requests *Optional* Scenario
 
+### Architecture Documents
+	
+* Component diagram for the overall system 
+    1. Train Ticketing System Component Diagram - server side only
+* Sequence diagrams for each implemented user scenario 
+    * Launch Train Ticketing System			
+    * User Login
+    * Search Tickets
+    * Select Itinerary	
+    * Enter Traveler Info
+    * Enter Payment Info and Checkout
+    * Manage Order by Admin
+    * Manage Customer Info by Admin	
+    * Request a Refund
+    * View Order History
+* Class diagram for the server-side
+    * trainsim-api
+        * trainsim-api - main class diagram				
+        * trainsim-api db component			
+        * trainsim-api itinerary component			
+        * trainsim-api order component				
+        * trainsim-api web component			
+     * trainsim-stripe
+* Quality attribute utility tree
+    * Train Ticketing System QA Utility Tree
+* Tactics applied for the quality attributes specified in the utility tree			
+    * Modifiability Tactics
+    * Security Tactics
+    * Performance Tactics
+    * Usability Tactics		
+* Extras
+    * Quality Attribute Tactics Scenarios
 
 ### Lesson Learned and Suggestions for Future Classes
 
@@ -54,12 +79,14 @@ There were a few things that made this group assignment difficult for our team. 
 1. The first was that our team members did not have experience with javascript, TypeScript,and frontend programming in general since we have all mostly worked on backend systems.  We spent a lot of time understanding what was happening in the front end code even though the functionality of the UI was fairly straight forward.
 2. The second, and most important, was starting with a working version that accomplished many of the major features, seems helpful but in the end, we felt like we were constantly reverse engineering the solution instead of architecting the solution ourselves.  It took us a while to get a grasp on the provided framework to realize this.  An initial walk through of the design and code would have been very helpful.  So by the time we had come up to speed on the design that was provided, we felt we needed to use what we had to make as much progress as possible.  However, what the provided framework really did was remove the ability for the team to iteratively create the solution and get momentum from working as a team to create the initial building blocks of the system.  We'll discuss this more in the Suggestions section below.  
 3. A feature that the provided framework was missing was a suite of tests for the functionality that was provided.  Writing tests while code is being developed is best practice for several reasons, one of which is to help developers that inherit the code understand the work that has been done.  Another benefit is to provide the means for new features to quickly be added by showing when the added changes have unintended consequences on existing functionality.  Instead we got this:
-```
+```javascript
     /**
      * Rigorous Test :-)
      */
     @Test
-    public void shouldAnswerWithTrue()  { assertTrue( true ); }
+    public void shouldAnswerWithTrue()  { 
+        assertTrue( true ); 
+    }
 ```
 
 Those issues aside, overall, we ended up learning a lot about about javascript and splitting out microservices, but not as much about architecting a solution from the beginning.  
@@ -73,6 +100,13 @@ Then we have could iteratively started implementing the backend part of the desi
 Once the backend system was in place with a robust test suite, the front end code could be added to provide the interface to the already functioning backend system.  Or the front end code could have been developed in parallel the back end code as the initial components were created.  Approaching the implementation in an iterative fashion would allow the team to build an initial set of webpages and get the momentum from those initial learnings that are expanded as more functionality is added.  The acceptance tests could also be expanded to interact with the UI using a tool like BDD/cucumber and Selenium.
 
 For our team, we felt like we missed one of the key parts of architecting and designing the system, which is making the decisions about the design based on the requirements and the abilities of the team that will ultimately build and operate the system.  
+
+### Project Details: 
+
+- [User Scenarios](https://docs.google.com/document/d/17qXcQV29qGFcG-WD5if1wZUmjGl9ywvFJMxEpQ1JR8Y/edit)
+- [Technology Stack](https://docs.google.com/document/d/17qXcQV29qGFcG-WD5if1wZUmjGl9ywvFJMxEpQ1JR8Y/edit)
+- [Database Schema](https://dbdiagram.io/d/60df44220b1d8a6d39649bfa)
+- [Template Repository](https://github.com/jlefever/trainsim-public)
 
 ## Getting Started
 
