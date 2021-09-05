@@ -18,6 +18,63 @@ A work-in-progress application to simulate purchasing train tickets. This projec
 | Brian Song    | Developer                                |
 | Steve Hurlock | Tester, Admin                            |
 
+### Plan and Progress
+
+Our initial plan was to translate the requirements into a set of features, required and optional, in as GitHub issues.  We started with a spreadsheet of the features and went through the provided design to determine the issues that existed with the code.  We decided the priority of the features & issues and our team members took up those issues.  Our architect created the documentation for the design including the component, sequence, and class diagrams for the system.
+
+We have been able to expand on the functionality of the system, but there are still many aspects that we did not have time to complete.  We discuss the issues we encountered in the next section.
+
+Scenario 3.1.1 - Search Tickets Scenario -- added Round Trip functionality
+Scenario 3.1.2 - Check Details Scenario
+Scenario 3.1.3 - Add to Cart Scenario
+Scenario 3.1.4 - Enter Traveler Info Scenario - Completed
+Scenario 3.1.5 - Enter Payment Info Scenario - Completed, added paypal integration
+Scenario 3.1.6 - Check Out Scenario - Completed 
+Scenario 3.1.7 - Check Out (Guest) Scenario - Completed?
+Scenario 3.1.8 - Check Out (Signed-In User) Scenario - Completed
+Scenario 3.1.9 - Sign In Scenario - Completed (provided)
+Scenario 3.1.10 - View Order History Scenario
+Scenario 3.2.11 - Request Refund [Optional] Scenario
+Scenario 3.2.12 - Browse Destinations [Optional] Scenario
+Scenario 3.2.13 - View Map of Destinations [Optional] Scenario
+Scenario 3.2.14 - View Attractions [Optional] Scenario
+Scenario 4.1.1 - Manage Customers Info Scenario
+Scenario 4.1.2 - Manage Customer Orders Scenario
+Scenario 4.2.3 - Admin Adds Customer Order Scenario
+Scenario 4.2.4 - Display Dashboards [Optional] Scenario
+Scenario 4.2.5 - Handle Refund Requests [Optional] Scenario
+
+
+### Lesson Learned and Suggestions for Future Classes
+
+Our group met often to discuss what was required for the assignment and we quickly had the sample framework up and running.  
+
+There were a few things that made this group assignment difficult for our team.  Although having a framework and working example to start with seems helpful, we struggled with several aspects of the project
+
+1. The first was that our team members did not have experience with javascript, TypeScript,and frontend programming in general since we have all work on backend systems.  We spent a lot of time understanding what was happening in the front end code even though the functionality of the UI was fairly straight forward.
+2. The second, and most important, was starting with a working version that accomplished many of the major features, seems helpful but in the end, we felt like we were constantly reverse engineering the solution instead of architecting the solution ourselves.  However, it took us a while to get a grasp on the provided framework to realize this.  An initial walk through of the design and code would have been very helpful.  So by the time we had come up to speed on the design that was provided, we felt we needed to use what we had to make as much progress as possible.  However, what the provided framework really did was remove the ability for the team to iteratively create the solution and get momentum from working as a team to create the initial building blocks of the system.  We'll discuss this more in the Suggestions section below.  
+3. Another feature that the provided framework was missing was a suite of tests for the functionality that was provided.  Writing tests while code is developed is best practice for several reasons, one of which is to help developers that inherit the code understand the work that has been done.  Another benefit is to provide the means for new features to quickly be added by showing when the added changes have unintended consequences on existing functionality.  Instead we got this:
+
+    /**
+     * Rigorous Test :-)
+     */
+    @Test
+    public void shouldAnswerWithTrue()  { assertTrue( true ); }
+
+
+Those issues aside, overall, we ended up learning a lot about about javascript and splitting out microservices, but not as much about architecting a solution from the beginning.  
+
+Suggestion: So we would like to humbly suggest another more iterative approach for the project:
+
+We think the requirements for project could have been given to the groups much earlier in the class, say in the 2nd or 3rd week, once we had a grasp on the initial component and sequence diagrams.  The team, lead by the architect, could have written all of the features from the requirements and created the initial component and sequence diagrams, so the entire team had a strong understanding of what needed to be built.  The acceptance tests would be written up front for each of the features so we knew how we would know features are working correctly.  
+
+Then we have could iteratively started implementing the backend part of the design.  Given our Java and Postgres experience from previous classes, we could have started with creating a single API and database table and then expanded that pattern to the other APIs per our design, adding them to docker containers and integrating with the other components of the system like Open Trip Planner, Stripe, etc. 
+
+Once the backend system was in place with a robust test suite, the front end code could be added to provide the interface to the already functioning backend system.  Or the front end code could have been developed in parallel the back end code as the initial components were created.  Approaching the implementation in an iterative fashion would allow the team to build an initial set of webpages and get the momentum from those initial learnings that is expanded as more functionality is added.  The acceptance tests could also be expanded to interact with the UI using a tool like BDD/cucumber and Selenium.
+
+For our team, we felt like we missed one of the key parts of architecting and designing the system, which is making the decisions about the design based on the requirements and the abilities of the team that will ultimately build and operate the system.  
+
+
 ## Getting Started
 
 The following tools are required to build and run this project: Docker, Docker Compose, Maven, Java 11, and npm.
